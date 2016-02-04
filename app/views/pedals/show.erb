@@ -1,0 +1,15 @@
+<h2><strong><%=@pedal.make%></a></strong></h2>
+<ul>
+	<li>Model: <%=@pedal.model%></li>
+	<li>Year: <%=@pedal.year%></li>
+</ul>
+
+
+<% if current_user.id == @pedal.user_id %>
+	<p><a href="/pedals/<%=@pedal.id%>/edit">edit</a></p>
+
+	<form method='post' action='/pedals/<%=@pedal.id%>/delete'>
+		<input id='hidden' type='hidden' name='_method' value='delete'>
+		<p><input type='submit' value='delete'></p>
+	</form>
+<% end %>

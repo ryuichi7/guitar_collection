@@ -1,0 +1,15 @@
+<h2><strong><%=@amp.make%></a></strong></h2>
+<ul>
+	<li>Model: <%=@amp.model%></li>
+	<li>Year: <%=@amp.year%></li>
+</ul>
+
+
+<% if current_user.id == @amp.user_id %>
+	<p><a href="/amps/<%=@amp.id%>/edit">edit</a></p>
+
+	<form method='post' action='/amps/<%=@amp.id%>/delete'>
+		<input id='hidden' type='hidden' name='_method' value='delete'>
+		<p><input type='submit' value='delete'></p>
+	</form>
+<% end %>

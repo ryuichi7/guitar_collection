@@ -1,0 +1,10 @@
+<form method='post' action='/pedals/<%=@pedal.id%>'>
+	<input id='hidden' type='hidden' name='_method' value='patch'>
+	<h1><label for='pedal'>Edit Pedal:</label></h1>
+	<ul>
+		<li><input id='pedal' type='text' name='pedal[make]' value='<%=@pedal.make%>'></li>
+		<li><input id='pedal' type='text' name='pedal[model]' value='<%=@pedal.model%>'></li>
+		<li><input id='pedal' type='text' name='pedal[year]' value='<%=@pedal.year%>'></li>
+	</ul>
+	<p><input type='submit' value='submit'></p>
+</form>

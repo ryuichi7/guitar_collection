@@ -1,0 +1,12 @@
+<% @users.each do |user| %>
+<% unless user.amps.empty? %>
+		<h2><%=user.username%>'s Amps</h2>
+		<% user.amps.each do |amp| %>
+			<ul>
+				<li><strong><a href="/amps/<%=amp.id%>"><%=amp.make%></a></strong></li>
+				<li>Model: <%=amp.model%></li>
+				<li>Year: <%=amp.year%></li>
+			</ul>
+		<% end %>
+	<% end %>
+<% end %>
