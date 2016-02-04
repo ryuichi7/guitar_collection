@@ -1,0 +1,2 @@
+class AmpsController < ApplicationController
+end

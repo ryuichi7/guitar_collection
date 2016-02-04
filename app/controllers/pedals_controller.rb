@@ -1,0 +1,2 @@
+class PedalsController < ApplicationController
+end
