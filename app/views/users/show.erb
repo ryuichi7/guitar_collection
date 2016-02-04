@@ -1,32 +1,23 @@
 <h1>Welcome, <%=current_user.username%></h1>
+
 <% unless current_user.guitars.empty? %>
 	<h2> Guitars: </h2>
 	<% current_user.guitars.each do |guitar| %>
-		<h3><%=guitar.make unless @guitars.include?(guitar.make) %></h3>
-		<a href="/guitars/<%=guitar.id%>"><%=guitar.model%></a></p>
-		<% @guitars << guitar.make %>
+		<li><a href="/guitars/<%=guitar.id%>"><%=guitar.make%> - <%=guitar.model%></li>
 	<% end %>
 <% end %>
+
 <% unless current_user.amps.empty? %>
 	<h2> Amps: </h2>
 	<% current_user.amps.each do |amp| %>
-		<h3><%=amp.make unless @amps.include?(amp.make) %></h3>
-		<a href="/amps/<%=amp.id%>"><%=amp.model%></a></p>
-		<% @amps << amp.make %>
+		<li><a href="/amps/<%=amp.id%>"><%=amp.make%> - <%=amp.model%></li>
 	<% end %>
 <% end %>
+
 <% unless current_user.pedals.empty? %>
 	<h2> Pedals: </h2>
 	<% current_user.pedals.each do |pedal| %>
-		<h3><%=pedal.make unless @pedals.include?(pedal.make) %></h3>
-		<a href="/pedals/<%=pedal.id%>"><%=pedal.model%></a></p>
-		<% @pedals << pedal.make %>
+		<li><a href="/pedals/<%=pedal.id%>"><%=pedal.make%> - <%=pedal.model%></li>
 	<% end %>
 <% end %>
 
-
-
-<h2><a href="/tweets/new">Make another tweet</a></h2>
-<h2><a href="/tweets">Tweets Index</a></h2>
-
-<a href="/logout">Logout</a>

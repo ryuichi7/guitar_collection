@@ -1,0 +1,15 @@
+<h2><strong><%=@guitar.make%></a></strong></h2>
+<ul>
+	<li>Model: <%=@guitar.model%></li>
+	<li>Year: <%=@guitar.year%></li>
+</ul>
+
+
+<% if current_user.id == @guitar.user_id %>
+	<p><a href="/guitars/<%=@guitar.id%>/edit">edit</a></p>
+
+	<form method='post' action='/guitars/<%=@guitar.id%>/delete'>
+		<input id='hidden' type='hidden' name='_method' value='delete'>
+		<p><input type='submit' value='delete'></p>
+	</form>
+<% end %>

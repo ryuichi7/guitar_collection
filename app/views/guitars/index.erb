@@ -1,0 +1,10 @@
+<% @users.each do |user| %>
+	<h2><%=user.username%>'s Guitars</h2>
+	<% user.guitars.each do |guitar| %>
+		<ul>
+			<li><strong><a href="/guitars/<%=guitar.id%>"><%=guitar.make%></a></strong></li>
+			<li>Model: <%=guitar.model%></li>
+			<li>Year: <%=guitar.year%></li>
+		</ul>
+	<% end %>
+<% end %>

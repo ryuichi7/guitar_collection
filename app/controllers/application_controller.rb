@@ -21,6 +21,11 @@ class ApplicationController < Sinatra::Base
 		def current_user
 			User.find_by_id(session[:id])
 		end
+
+		def login_failure
+			@error = "You must login to view content"
+			erb :'users/login'
+		end
 	end
 
 end

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 	  	@users = User.all
 			erb :'users/index'
 		else
-			redirect '/login'
+			login_failure
 		end
 	end
 
@@ -13,11 +13,12 @@ class UsersController < ApplicationController
 		if !logged_in?
 			erb :'users/login'
 		else
-			redirect '/users'
+			redirect '/users/show'
 		end
 	end
 
 	get '/signup' do
+		@errors = params[:errors]
 		if !logged_in?
 			erb :'users/signup'
 		else
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
 		@user = User.create(params)
 		if @user.save
 			session[:id] = @user.id
-			redirect '/users'
+			redirect '/users/show'
 		else
 			redirect '/signup' #figure out how to add some error messages
 		end
@@ -39,25 +40,38 @@ class UsersController < ApplicationController
 		@user = User.find_by(username: params[:username])
 		if @user && @user.authenticate(params[:password])
 			session[:id] = @user.id
-			redirect '/users'
+			redirect '/users/show'
 		else
 			redirect '/login' #figure eror message for login failure
 		end
 	end
 
 	get '/logout' do
-		session[:id].clear
-		redirect '/logout' #some type of logout message
+		session.clear
+		redirect '/login' #some type of logout message
 	end
 
 	get '/users/show' do
 		if logged_in?
-			@guitars = []
-			@amps = []
-			@pedals = []
 			erb :'users/show'
 		else
-			redirect '/login'
+			login_failure
 		end
 	end
+
+	get '/users/:id' do
+		@user = User.find_by_id(params[:id])
+		if logged_in?
+			redirect '/users/show'
+		else
+			login_failure
+		end
+	end
+
+
+
+
+
+
+
 end
