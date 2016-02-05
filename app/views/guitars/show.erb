@@ -1,8 +1,8 @@
 <h2><strong><%=@guitar.make%></a></strong></h2>
-<ul>
-	<li>Model: <%=@guitar.model%></li>
-	<li>Year: <%=@guitar.year%></li>
-</ul>
+
+	<p>Model: <%=@guitar.model%></p>
+	<p>Year: <%=@guitar.year%></p>
+
 
 
 <% if current_user.id == @guitar.user_id %>

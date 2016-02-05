@@ -5,7 +5,7 @@ class ApplicationController < Sinatra::Base
   configure do
   	enable :sessions
     set :session_secret, "guitar_hero"
-    set :public_folder, 'public'
+    set :public_folder, 'app/public'
     set :views, 'app/views'
   end
 

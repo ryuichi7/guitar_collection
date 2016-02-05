@@ -1,0 +1,21 @@
+body {
+		background-color: #B0E0E6;
+	}
+
+	h2 {
+		font-family: 'Merriweather', serif;
+	}
+
+	div#main {
+		padding-top: 5%;
+		text-align: center;
+
+	}
+
+	a {
+		color: grey;
+	}
+
+	.shadow {
+		box-shadow: 0 3px 10px #333;
+	}

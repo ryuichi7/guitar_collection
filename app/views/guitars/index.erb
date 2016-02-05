@@ -5,11 +5,9 @@
 	<% unless user.guitars.empty? %>
 			<h2><%=user.username%>'s Guitars</h2>
 			<% user.guitars.each do |guitar| %>
-				<ul>
-					<li><strong><a href="/guitars/<%=guitar.id%>"><%=guitar.make%></a></strong></li>
-					<li>Model: <%=guitar.model%></li>
-					<li>Year: <%=guitar.year%></li>
-				</ul>
+					<p><strong><a href="/guitars/<%=guitar.id%>"><%=guitar.make%></a></strong></p>
+					<p>Model: <%=guitar.model%></p>
+					<p>Year: <%=guitar.year%></p>
 			<% end %>
 		<% end %>
 	<% end %>

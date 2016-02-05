@@ -1,10 +1,8 @@
 <form method='post' action='/guitars/<%=@guitar.id%>'>
 	<input id='hidden' type='hidden' name='_method' value='patch'>
-	<h1><label for='guitar'>Edit Guitar:</label></h1>
-	<ul>
-		<li><input id='guitar' type='text' name='guitar[make]' value='<%=@guitar.make%>'></li>
-		<li><input id='guitar' type='text' name='guitar[model]' value='<%=@guitar.model%>'></li>
-		<li><input id='guitar' type='text' name='guitar[year]' value='<%=@guitar.year%>'></li>
-	</ul>
+	<h2><label for='guitar'>Edit Guitar:</label></h2>
+		<p><input id='guitar' type='text' name='guitar[make]' value='<%=@guitar.make%>'></p>
+		<p><input id='guitar' type='text' name='guitar[model]' value='<%=@guitar.model%>'></p>
+		<p><input id='guitar' type='text' name='guitar[year]' value='<%=@guitar.year%>'></p>
 	<p><input type='submit' value='submit'></p>
 </form>

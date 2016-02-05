@@ -3,20 +3,20 @@
 <% unless @user.guitars.empty? %>
 	<h3> Guitars: </h3>
 	<% @user.guitars.each do |guitar| %>
-		<li><a href="/guitars/<%=guitar.id%>"><%=guitar.make%> - <%=guitar.model%></a></li>
+		<p><a href="/guitars/<%=guitar.id%>"><%=guitar.make%> - <%=guitar.model%></a></p>
 	<% end %>
 <% end %>
 
 <% unless @user.amps.empty? %>
 	<h3> Amps: </h3>
 	<% @user.amps.each do |amp| %>
-		<li><a href="/amps/<%=amp.id%>"><%=amp.make%> - <%=amp.model%></a></li>
+		<p><a href="/amps/<%=amp.id%>"><%=amp.make%> - <%=amp.model%></a></p>
 	<% end %>
 <% end %>
 
 <% unless @user.pedals.empty? %>
 	<h3> Pedals: </h3>
 	<% @user.pedals.each do |pedal| %>
-		<li><a href="/pedals/<%=pedal.id%>"><%=pedal.make%> - <%=pedal.model%></a></li>
+		<p><a href="/pedals/<%=pedal.id%>"><%=pedal.make%> - <%=pedal.model%></a></p>
 	<% end %>
 <% end %>

@@ -5,11 +5,9 @@
 		<% unless user.pedals.empty? %>
 			<h2><%=user.username%>'s Pedals</h2>
 			<% user.pedals.each do |pedal| %>
-				<ul>
-					<li><strong><a href="/pedals/<%=pedal.id%>"><%=pedal.make%></a></strong></li>
-					<li>Model: <%=pedal.model%></li>
-					<li>Year: <%=pedal.year%></li>
-				</ul>
+					<p><strong><a href="/pedals/<%=pedal.id%>"><%=pedal.make%></a></strong></p>
+					<p>Model: <%=pedal.model%></p>
+					<p>Year: <%=pedal.year%></p>
 			<% end %>
 		<% end %>
 	<% end %>

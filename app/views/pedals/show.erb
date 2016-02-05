@@ -1,8 +1,6 @@
 <h2><strong><%=@pedal.make%></a></strong></h2>
-<ul>
-	<li>Model: <%=@pedal.model%></li>
-	<li>Year: <%=@pedal.year%></li>
-</ul>
+	<p>Model: <%=@pedal.model%></p>
+	<p>Year: <%=@pedal.year%></p>
 
 
 <% if current_user.id == @pedal.user_id %>
