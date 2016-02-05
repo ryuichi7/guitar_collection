@@ -20,7 +20,8 @@ class GuitarsController < ApplicationController
 
 	post '/guitars' do
 		if current_user.guitars.create(params).save
-			redirect '/users/show'
+			session[:message] = 'Guitar successfully created'
+			redirect '/guitars'
 		else
 			@message = "Please fill in all fields"
 			erb :'guitars/new'

@@ -20,7 +20,8 @@ class PedalsController < ApplicationController
 
 	post '/pedals' do
 		if current_user.pedals.create(params).save
-			redirect '/users/show'
+			session[:message] = 'Pedal successfully created'
+			redirect '/pedals'
 		else
 			@message = "Please fill in all fields"
 			erb :'pedals/new'
