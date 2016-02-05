@@ -1,12 +1,16 @@
-<% @users.each do |user| %>
-<% unless user.guitars.empty? %>
-		<h2><%=user.username%>'s Guitars</h2>
-		<% user.guitars.each do |guitar| %>
-			<ul>
-				<li><strong><a href="/guitars/<%=guitar.id%>"><%=guitar.make%></a></strong></li>
-				<li>Model: <%=guitar.model%></li>
-				<li>Year: <%=guitar.year%></li>
-			</ul>
+<% if Guitar.all.empty? %>
+	<h2>Sorry no Guitars listed yet</h2>
+<% else %>
+	<% @users.each do |user| %>
+	<% unless user.guitars.empty? %>
+			<h2><%=user.username%>'s Guitars</h2>
+			<% user.guitars.each do |guitar| %>
+				<ul>
+					<li><strong><a href="/guitars/<%=guitar.id%>"><%=guitar.make%></a></strong></li>
+					<li>Model: <%=guitar.model%></li>
+					<li>Year: <%=guitar.year%></li>
+				</ul>
+			<% end %>
 		<% end %>
 	<% end %>
-<% end %>
+<% end %>	

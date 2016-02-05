@@ -5,30 +5,47 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   </head>
   <body>
-    <nav>
-      <% if logged_in? %>
-	      <ul>
-	      	<li><a href="/users/show"> Home </a></li>
-	      	<li><a href="/guitars"> Guitars </a></li>
-	        <li><a href="/amps"> Amps </a></li>
-	        <li><a href="/pedals"> Pedals </a></li>
-	        <li><a href="/logout"> Log Out </a></li>
-	      </ul>
-      <% else %>
-        <a href="/signup">Sign Up</a>
-        <a href="/login"> Sign In </a>
-      <%end %>
+  	<div class="container" >
+	  	<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			      <a class="navbar-brand" href="/users/show">Guitar Collection</a>
+			    </div>
 
-    </nav>
-    <div class="container">
-      <% if !@error.nil? %>
-      <div class="alert alert-warning">
-        <%= @error %>
-      </div>
-    <% end %>
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      <% if logged_in? %>
+				      <ul class="nav navbar-nav">
+				        <li><a href="/users/show"> Home </a></li>
+				      	<li><a href="/users"> Users </a></li>
+				      	<li><a href="/guitars"> Guitars </a></li>
+				        <li><a href="/amps"> Amps </a></li>
+				        <li><a href="/pedals"> Pedals </a></li>
+				        <li><a href="/logout"> Log Out </a></li> 
+				        <li><a href="/guitars/new">Add Guitar</a></li>
+								<li><a href="/pedals/new">Add Pedal</a></li>
+								<li><a href="/amps/new">Add Amp</a></li>  
+				      </ul>
+				    <%end %>
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+      <% if !@message.nil? && !@message.empty? %>
+      	<div class="alert alert-warning">
+        <%= @message %>
+        <% session[:message].clear %>
+      	</div>
+    	<% end %>
       <%= yield %> 
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </body>
 </html>

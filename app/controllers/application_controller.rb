@@ -15,17 +15,22 @@ class ApplicationController < Sinatra::Base
 
 	helpers do
 		def logged_in?
-			!!session[:id]
+			!!current_user
 		end
 
 		def current_user
-			User.find_by_id(session[:id])
+			user ||= User.find_by_id(session[:id])
 		end
 
 		def login_failure
-			@error = "You must login to view content"
+			@message = "You must login to view content"
 			erb :'users/login'
 		end
+
+		def update_message
+			session[:message] = "Successfully updated"
+		end
+
 	end
 
 end

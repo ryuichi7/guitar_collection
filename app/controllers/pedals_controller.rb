@@ -1,6 +1,7 @@
 class PedalsController < ApplicationController
 
 	get '/pedals' do
+		@message = session[:message]
 		if logged_in?
 			@users = User.all
 			erb :'pedals/index'
@@ -21,7 +22,7 @@ class PedalsController < ApplicationController
 		if current_user.pedals.create(params).save
 			redirect '/users/show'
 		else
-			@error = "Please fill in all fields"
+			@message = "Please fill in all fields"
 			erb :'pedals/new'
 		end
 	end
@@ -38,16 +39,17 @@ class PedalsController < ApplicationController
 	delete '/pedals/:id/delete' do
 		@pedal = Pedal.find_by_id(params[:id])
 		@pedal.destroy if @pedal.user_id == current_user.id
-		@error = 'Pedal successfully deleted'
+		@message = 'Pedal successfully deleted'
 		erb :'/users/show'
 	end
 
 	patch '/pedals/:id' do
 		@pedal = Pedal.find_by_id(params[:id])
-		if @pedal.update(params[:pedal])
+		if @pedal.update(params[:pedal]) && @pedal.user_id == current_user.id
+			update_message
 			redirect '/pedals'
 		else
-			@error = "Please fill in all fields"
+			@message = "Please fill in all fields"
 			erb :"pedals/edit"
 		end
 	end

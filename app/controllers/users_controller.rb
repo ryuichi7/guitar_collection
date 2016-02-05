@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 	end
 
 	get '/login' do
+		@message = session[:message]
 		if !logged_in?
 			erb :'users/login'
 		else
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
 	end
 
 	get '/signup' do
-		@errors = params[:errors]
+		@message = session[:message]
 		if !logged_in?
 			erb :'users/signup'
 		else
@@ -32,7 +33,8 @@ class UsersController < ApplicationController
 			session[:id] = @user.id
 			redirect '/users/show'
 		else
-			redirect '/signup' #figure out how to add some error messages
+			session[:message] = @user.errors.full_messages.to_sentence
+			redirect '/signup'
 		end
 	end
 
@@ -42,13 +44,15 @@ class UsersController < ApplicationController
 			session[:id] = @user.id
 			redirect '/users/show'
 		else
-			redirect '/login' #figure eror message for login failure
+			session[:message] = "Incorrect username or password"
+			redirect '/login'
 		end
 	end
 
 	get '/logout' do
 		session.clear
-		redirect '/login' #some type of logout message
+		session[:message] = "Successfully logged out"
+		redirect '/login'
 	end
 
 	get '/users/show' do
@@ -62,7 +66,11 @@ class UsersController < ApplicationController
 	get '/users/:id' do
 		@user = User.find_by_id(params[:id])
 		if logged_in?
-			redirect '/users/show'
+			if @user == current_user
+				redirect '/users/show'
+			else
+				erb :'users/member'
+			end
 		else
 			login_failure
 		end

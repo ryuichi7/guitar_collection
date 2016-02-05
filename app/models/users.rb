@@ -3,6 +3,6 @@ class User < ActiveRecord::Base
 	has_many :amps
 	has_many :pedals
 	has_secure_password
-	validates :username, :email, :password_digest, 
-						:presence => { :message => "You must properly fill in all fields" }
+	validates :username, :email, 
+						:presence => { :message => "must be filled in properly" }
 end

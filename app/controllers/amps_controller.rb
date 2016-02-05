@@ -1,6 +1,7 @@
 class AmpsController < ApplicationController
 
 	get '/amps' do
+		@message = session[:message]
 		if logged_in?
 			@users = User.all
 			erb :'amps/index'
@@ -21,7 +22,7 @@ class AmpsController < ApplicationController
 		if current_user.amps.create(params).save
 			redirect '/users/show'
 		else
-			@error = "Please fill in all fields"
+			@message = "Please fill in all fields"
 			erb :'amps/new'
 		end
 	end
@@ -38,16 +39,17 @@ class AmpsController < ApplicationController
 	delete '/amps/:id/delete' do
 		@amp = Amp.find_by_id(params[:id])
 		@amp.destroy if @amp.user_id == current_user.id
-		@error = 'amp successfully deleted'
+		@message = 'amp successfully deleted'
 		erb :'/users/show'
 	end
 
 	patch '/amps/:id' do
 		@amp = Amp.find_by_id(params[:id])
-		if @amp.update(params[:amp])
+		if @amp.update(params[:amp]) && @amp.user_id == current_user.id
+			update_message
 			redirect '/amps'
 		else
-			@error = "Please fill in all fields"
+			@message = "Please fill in all fields"
 			erb :"amps/edit"
 		end
 	end

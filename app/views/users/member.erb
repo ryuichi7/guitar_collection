@@ -1,25 +1,22 @@
-<h1>Welcome, <%=current_user.username%></h1>
+<h2><%= @user.username %>'s Page</h2>
 
-<% unless current_user.guitars.empty? %>
+<% unless @user.guitars.empty? %>
 	<h3> Guitars: </h3>
-	<% current_user.guitars.each do |guitar| %>
+	<% @user.guitars.each do |guitar| %>
 		<li><a href="/guitars/<%=guitar.id%>"><%=guitar.make%> - <%=guitar.model%></a></li>
 	<% end %>
 <% end %>
 
-<% unless current_user.amps.empty? %>
+<% unless @user.amps.empty? %>
 	<h3> Amps: </h3>
-	<% current_user.amps.each do |amp| %>
+	<% @user.amps.each do |amp| %>
 		<li><a href="/amps/<%=amp.id%>"><%=amp.make%> - <%=amp.model%></a></li>
 	<% end %>
 <% end %>
 
-<% unless current_user.pedals.empty? %>
+<% unless @user.pedals.empty? %>
 	<h3> Pedals: </h3>
-	<% current_user.pedals.each do |pedal| %>
+	<% @user.pedals.each do |pedal| %>
 		<li><a href="/pedals/<%=pedal.id%>"><%=pedal.make%> - <%=pedal.model%></a></li>
 	<% end %>
 <% end %>
-
-
-

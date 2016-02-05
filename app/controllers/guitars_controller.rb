@@ -1,6 +1,7 @@
 class GuitarsController < ApplicationController
 
 	get '/guitars' do
+		@message = session[:message]
 		if logged_in?
 			@users = User.all
 			erb :'guitars/index'
@@ -21,7 +22,7 @@ class GuitarsController < ApplicationController
 		if current_user.guitars.create(params).save
 			redirect '/users/show'
 		else
-			@error = "Please fill in all fields"
+			@message = "Please fill in all fields"
 			erb :'guitars/new'
 		end
 	end
@@ -38,16 +39,17 @@ class GuitarsController < ApplicationController
 	delete '/guitars/:id/delete' do
 		@guitar = Guitar.find_by_id(params[:id])
 		@guitar.destroy if @guitar.user_id == current_user.id
-		@error = 'Guitar successfully deleted'
+		@message = 'Guitar successfully deleted'
 		erb :'/users/show'
 	end
 
 	patch '/guitars/:id' do
 		@guitar = Guitar.find_by_id(params[:id])
-		if @guitar.update(params[:guitar])
+		if @guitar.update(params[:guitar]) && @guitar.user_id == current_user.id
+			update_message
 			redirect '/guitars'
 		else
-			@error = "Please fill in all fields"
+			@message = "Please fill in all fields"
 			erb :"guitars/edit"
 		end
 	end
