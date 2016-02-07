@@ -2,20 +2,31 @@ body {
 		background-color: #B0E0E6;
 	}
 
-	h2 {
-		font-family: 'Merriweather', serif;
-	}
+h2 {
+	font-family: 'Merriweather', serif;
+}
 
-	div#main {
-		padding-top: 5%;
-		text-align: center;
+div#main {
+	padding-top: 2%;
+	text-align: center;
 
-	}
+}
 
-	a {
-		color: grey;
-	}
+a {
+	color: grey;
+}
 
-	.shadow {
-		box-shadow: 0 3px 10px #333;
-	}
+.shadow {
+	box-shadow: 0 3px 10px #333;
+}
+
+footer {
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%; 
+  font-size: 0.75em;
+  padding: 10px;
+  background: #eee;
+  border-top: 1px solid; 
+}
