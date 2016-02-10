@@ -1,22 +1,26 @@
 <h2><%= @user.username %>'s Page</h2>
 
-<% unless @user.guitars.empty? %>
-	<h3> Guitars: </h3>
-	<% @user.guitars.each do |guitar| %>
-		<p><a href="/guitars/<%=guitar.id%>"><%=guitar.make%> - <%=guitar.model%></a></p>
+<% if @user.guitars.empty? && @user.amps.empty? && @user.pedals.empty? %>
+	<h3><%= @user.username %> hasn't listed any items yet :(</h3>
+<% else %>
+	<% if @user.guitars.any? %>
+		<h3> Guitars: </h3>
+		<% @user.guitars.each do |guitar| %>
+			<p><a href="/guitars/<%=guitar.id%>"><%=guitar.make%> - <%=guitar.model%></a></p>
+		<% end %>
 	<% end %>
-<% end %>
 
-<% unless @user.amps.empty? %>
-	<h3> Amps: </h3>
-	<% @user.amps.each do |amp| %>
-		<p><a href="/amps/<%=amp.id%>"><%=amp.make%> - <%=amp.model%></a></p>
+	<% if @user.amps.any? %>
+		<h3> Amps: </h3>
+		<% @user.amps.each do |amp| %>
+			<p><a href="/amps/<%=amp.id%>"><%=amp.make%> - <%=amp.model%></a></p>
+		<% end %>
 	<% end %>
-<% end %>
 
-<% unless @user.pedals.empty? %>
-	<h3> Pedals: </h3>
-	<% @user.pedals.each do |pedal| %>
-		<p><a href="/pedals/<%=pedal.id%>"><%=pedal.make%> - <%=pedal.model%></a></p>
+	<% if @user.pedals.any? %>
+		<h3> Pedals: </h3>
+		<% @user.pedals.each do |pedal| %>
+			<p><a href="/pedals/<%=pedal.id%>"><%=pedal.make%> - <%=pedal.model%></a></p>
+		<% end %>
 	<% end %>
 <% end %>

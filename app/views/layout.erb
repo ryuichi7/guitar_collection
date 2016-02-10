@@ -31,11 +31,11 @@
 						      	<li><a href="/users"> Users </a></li>
 						      	<li><a href="/guitars"> Guitars </a></li>
 						        <li><a href="/amps"> Amps </a></li>
-						        <li><a href="/pedals"> Pedals </a></li>
-						        <li><a href="/logout"> Log Out </a></li> 
+						        <li><a href="/pedals"> Pedals </a></li> 
 						        <li><a href="/guitars/new">Add Guitar</a></li>
 										<li><a href="/pedals/new">Add Pedal</a></li>
-										<li><a href="/amps/new">Add Amp</a></li>  
+										<li><a href="/amps/new">Add Amp</a></li>
+										<li><a href="/logout"> Log Out </a></li>  
 						      </ul>
 						    <%end %>
 					    </div><!-- /.navbar-collapse -->
@@ -48,7 +48,7 @@
       <% if !@message.nil? && !@message.empty? %>
       	<div class="alert alert-warning">
         <%= @message %>
-        <% session[:message].clear %>
+        <% session[:message].clear unless session[:message].nil? %>
       	</div>
     	<% end %>
       <%= yield %> 

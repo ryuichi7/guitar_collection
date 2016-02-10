@@ -19,7 +19,7 @@ class GuitarsController < ApplicationController
 	end
 
 	post '/guitars' do
-		if current_user.guitars.create(params).save
+		if current_user.guitars.create(params)
 			session[:message] = 'Guitar successfully created'
 			redirect '/guitars'
 		else

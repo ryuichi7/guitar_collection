@@ -19,7 +19,7 @@ class PedalsController < ApplicationController
 	end
 
 	post '/pedals' do
-		if current_user.pedals.create(params).save
+		if current_user.pedals.create(params)
 			session[:message] = 'Pedal successfully created'
 			redirect '/pedals'
 		else

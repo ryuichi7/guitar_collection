@@ -6,6 +6,10 @@ h2 {
 	font-family: 'Merriweather', serif;
 }
 
+h3 {
+  font-family: 'Merriweather', serif;
+}
+
 div#main {
 	padding-top: 2%;
 	text-align: center;
@@ -13,7 +17,7 @@ div#main {
 }
 
 a {
-	color: grey;
+	color: #515A59;
 }
 
 .shadow {

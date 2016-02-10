@@ -19,7 +19,7 @@ class AmpsController < ApplicationController
 	end
 
 	post '/amps' do
-		if current_user.amps.create(params).save
+		if current_user.amps.create(params)
 			session[:message] = 'Amp successfully created'
 			redirect '/amps'
 		else
